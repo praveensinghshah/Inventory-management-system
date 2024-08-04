@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to the Inventory Management System</h1>
+    <p class="lead">Manage your products, categories, suppliers, and orders efficiently.</p>
+    <p><a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Product")" role="button">View Products</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Products</h2>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Product")">View Products &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Categories</h2>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Category")">View Categories &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Suppliers</h2>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Supplier")">View Suppliers &raquo;</a></p>
+    </div>
+</div>
