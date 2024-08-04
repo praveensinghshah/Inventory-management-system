@@ -1,0 +1,55 @@
+﻿@model IMS.Models.LoginviewModel
+
+@{
+    ViewBag.Title = "LOG IN";
+
+    ViewBag.HideNavbar = true;
+}
+
+<div class="login-container">
+    <div class="login-box">
+        <h2 class="login-title">Login</h2>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login-form" }))
+        {
+@Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Username)
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Username)
+                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password)
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.Role)
+                                                    @Html.DropDownListFor(m => m.Role, new SelectList(ViewBag.Roles, "Value", "Text"), "Select a role", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.Role)
+                                                </div>
+                                                                <button type="submit" class="btn btn-primary">Login</button>}
+    </div>
+</div>
+
+<style>
+    .login-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+    .login-title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>

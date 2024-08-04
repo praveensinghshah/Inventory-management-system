@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Admin Dashboard</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    @if (ViewBag.HideNavbar != true)
+    {
+        <header class="vertical-navbar">
+            <div class="navbar-header">Admin Dashboard</div>
+            <nav class="navbar-menu">
+                @{
+                    var navItems = new List<dynamic>
+                        {
+                        new { Text = "Home", Action = "Index", Controller = "Admin" },
+                        new { Text = "Users", Action = "Index", Controller = "User" },
+                        new { Text = "Product", Action = "Index", Controller = "Product" },
+                        new { Text = "Category", Action = "Index", Controller = "Category" },
+                        new { Text = "Supplier", Action = "Index", Controller = "Supplier" },
+                        new { Text = "Transaction", Action = "Index", Controller = "InventoryTransaction" }
+                    };
+                }
+                @foreach (var item in navItems)
+                {
+                    <a href="@Url.Action(item.Action, item.Controller)">@item.Text</a>
+                }
+                <!-- Logout Button -->
+                <form action="@Url.Action("Logout", "Account")" method="post" class="logout-form">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn-logout">Logout</button>
+                </form>
+            </nav>
+            <div class="navbar-footer">
+                &copy; @DateTime.Now.Year - Inventory Management System
+            </div>
+        </header>
+    }
+    <div class="container body-content @(ViewBag.HideNavbar != true ? "main-content" : "")">
+        @RenderBody()
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Inventory Management System</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <style>
+        /* Styles for the logout button */
+        .logout-form {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .btn-logout {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .btn-logout:hover {
+                background-color: #c9302c;
+            }
+    </style>
+</body>
+</html>

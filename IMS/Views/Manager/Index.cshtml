@@ -1,0 +1,61 @@
+﻿@model IMS.Models.ManagerDashboardViewModel
+
+@{
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="dashboard-overview">
+    <div class="overview-item">
+        <h3>Recent Inventory Transactions</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var transaction in Model.RecentTransactions)
+                {
+    <tr>
+        <td>@transaction.TransactionId</td>
+        <td>@transaction.Product.Name</td>
+        <td>@transaction.Quantity</td>
+        <td>@transaction.TransactionType</td>
+        <td>@transaction.TransactionDate.ToString("dd MMM yyyy")</td>
+    </tr>}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="overview-item">
+        <h3>Pending Supplier Orders</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Supplier</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.SupplierOrders)
+                {
+    <tr>
+        <td>@order.OrderId</td>
+        <td>@order.CustomerId</td>
+        <td>@order.OrderStatus</td>
+        <td>@order.OrderDate.ToString("dd MMM yyyy")</td>
+    </tr>}
+            </tbody>
+        </table>
+    </div>
+</div>
+
