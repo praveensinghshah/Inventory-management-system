@@ -1,0 +1,52 @@
+﻿@model IEnumerable<IMS.Models.UserRole>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Product</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="= table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UserRoleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().User.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UpdatedAt)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserRoleId</td>
+                </tr>
+            <tr>
+                <td>@item.User.Username</td>
+            </tr>
+            <tr>
+                <td>@item.Role</td>
+            </tr>
+            <tr>
+                <td>@item.CreatedAt</td>
+            </tr>
+            <tr>
+                <td>@item.UpdatedAt</td>
+            </tr>
+              
+        }
+    </tbody>
+</table>
